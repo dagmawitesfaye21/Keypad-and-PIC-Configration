@@ -1,0 +1,1327 @@
+
+
+Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
+                                                                                               Tue Mar 15 05:22:40 2022
+
+Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
+     1                           	processor	18F43K22
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    18                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    19                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    20                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    21  0000                     
+    22                           ; Version 2.20
+    23                           ; Generated 05/05/2020 GMT
+    24                           ; 
+    25                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    26                           ; All rights reserved.
+    27                           ; 
+    28                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    29                           ; 
+    30                           ; Redistribution and use in source and binary forms, with or without modification, are
+    31                           ; permitted provided that the following conditions are met:
+    32                           ; 
+    33                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    34                           ;        conditions and the following disclaimer.
+    35                           ; 
+    36                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    37                           ;        of conditions and the following disclaimer in the documentation and/or other
+    38                           ;        materials provided with the distribution.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
+    52                           ; 
+    53                           ; Code-generator required, PIC18F43K22 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56  0000                     _ANSELC	set	3898
+    57  0000                     _ANSELD	set	3899
+    58  0000                     _TRISC	set	3988
+    59  0000                     _TRISD	set	3989
+    60  0000                     _TRISB	set	3987
+    61  0000                     _PORTBbits	set	3969
+    62  0000                     _PORTD	set	3971
+    63  0000                     _PORTCbits	set	3970
+    64                           
+    65                           	psect	smallconst
+    66  000200                     __psmallconst:
+    67                           	callstack 0
+    68  000200  00                 	db	0
+    69  000201                     STR_1:
+    70  000201  4B                 	db	75	;'K'
+    71  000202  45                 	db	69	;'E'
+    72  000203  59                 	db	89	;'Y'
+    73  000204  50                 	db	80	;'P'
+    74  000205  41                 	db	65	;'A'
+    75  000206  44                 	db	68	;'D'
+    76  000207  3A                 	db	58	;':'
+    77  000208  00                 	db	0
+    78  000209  00                 	db	0	; dummy byte at the end
+    79  0000                     
+    80                           ; #config settings
+    81                           
+    82                           	psect	cinit
+    83  00048C                     __pcinit:
+    84                           	callstack 0
+    85  00048C                     start_initialization:
+    86                           	callstack 0
+    87  00048C                     __initialization:
+    88                           	callstack 0
+    89  00048C                     end_of_initialization:
+    90                           	callstack 0
+    91  00048C                     __end_of__initialization:
+    92                           	callstack 0
+    93  00048C  0E00               	movlw	low (__Lsmallconst shr (0+16))
+    94  00048E  6EF8               	movwf	tblptru,c
+    95  000490  0E02               	movlw	high __Lsmallconst
+    96  000492  6EF7               	movwf	tblptrh,c
+    97  000494  0100               	movlb	0
+    98  000496  EFDD  F001         	goto	_main	;jump to C main() function
+    99                           
+   100                           	psect	cstackCOMRAM
+   101  000001                     __pcstackCOMRAM:
+   102                           	callstack 0
+   103  000001                     ??_lcd_lat:
+   104  000001                     
+   105                           ; 1 bytes @ 0x0
+   106  000001                     	ds	1
+   107  000002                     lcd_cmd@command:
+   108                           	callstack 0
+   109  000002                     lcd_data@data:
+   110                           	callstack 0
+   111                           
+   112                           ; 1 bytes @ 0x1
+   113  000002                     	ds	1
+   114  000003                     lcd_string@strng:
+   115                           	callstack 0
+   116                           
+   117                           ; 2 bytes @ 0x2
+   118  000003                     	ds	2
+   119  000005                     
+   120                           ; 1 bytes @ 0x4
+   121 ;;
+   122 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   123 ;;
+   124 ;; *************** function _main *****************
+   125 ;; Defined at:
+   126 ;;		line 128 in file "keypad.c"
+   127 ;; Parameters:    Size  Location     Type
+   128 ;;		None
+   129 ;; Auto vars:     Size  Location     Type
+   130 ;;		None
+   131 ;; Return value:  Size  Location     Type
+   132 ;;                  1    wreg      void 
+   133 ;; Registers used:
+   134 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   135 ;; Tracked objects:
+   136 ;;		On entry : 0/0
+   137 ;;		On exit  : 0/0
+   138 ;;		Unchanged: 0/0
+   139 ;; Data sizes:     COMRAM   BANK0   BANK1
+   140 ;;      Params:         0       0       0
+   141 ;;      Locals:         0       0       0
+   142 ;;      Temps:          0       0       0
+   143 ;;      Totals:         0       0       0
+   144 ;;Total ram usage:        0 bytes
+   145 ;; Hardware stack levels required when called: 3
+   146 ;; This function calls:
+   147 ;;		_keypadC1
+   148 ;;		_keypadC2
+   149 ;;		_keypadC3
+   150 ;;		_lcd_cmd
+   151 ;;		_lcd_int
+   152 ;;		_lcd_string
+   153 ;; This function is called by:
+   154 ;;		Startup code after reset
+   155 ;; This function uses a non-reentrant model
+   156 ;;
+   157                           
+   158                           	psect	text0
+   159  0003BA                     __ptext0:
+   160                           	callstack 0
+   161  0003BA                     _main:
+   162                           	callstack 28
+   163  0003BA                     
+   164                           ;keypad.c: 129:     TRISB = 0xF0;
+   165  0003BA  0EF0               	movlw	240
+   166  0003BC  6E93               	movwf	147,c	;volatile
+   167                           
+   168                           ;keypad.c: 130:     ANSELD = 0x00;
+   169  0003BE  0E00               	movlw	0
+   170  0003C0  010F               	movlb	15	; () banked
+   171  0003C2  6F3B               	movwf	59,b	;volatile
+   172                           
+   173                           ;keypad.c: 131:     TRISD = 0x00;
+   174  0003C4  0E00               	movlw	0
+   175  0003C6  6E95               	movwf	149,c	;volatile
+   176  0003C8                     
+   177                           ; BSR set to: 15
+   178                           ;keypad.c: 132:     ANSELC &= 0xF8;
+   179  0003C8  0EF8               	movlw	248
+   180  0003CA  173A               	andwf	58,f,b	;volatile
+   181  0003CC                     
+   182                           ; BSR set to: 15
+   183                           ;keypad.c: 133:     TRISC &= 0xF8;
+   184  0003CC  0EF8               	movlw	248
+   185  0003CE  1694               	andwf	148,f,c	;volatile
+   186  0003D0                     
+   187                           ; BSR set to: 15
+   188                           ;keypad.c: 134:     lcd_int();
+   189  0003D0  EC1B  F002         	call	_lcd_int	;wreg free
+   190  0003D4                     
+   191                           ;keypad.c: 135:     lcd_cmd(0x80);
+   192  0003D4  0E80               	movlw	128
+   193  0003D6  EC36  F002         	call	_lcd_cmd
+   194  0003DA                     
+   195                           ;keypad.c: 136:     lcd_string("KEYPAD:");
+   196  0003DA  0E01               	movlw	low STR_1
+   197  0003DC  6E03               	movwf	lcd_string@strng^0,c
+   198  0003DE  0E02               	movlw	high STR_1
+   199  0003E0  6E04               	movwf	(lcd_string@strng+1)^0,c
+   200  0003E2  EC00  F002         	call	_lcd_string	;wreg free
+   201  0003E6                     
+   202                           ;keypad.c: 137:     lcd_cmd(0xC0);
+   203  0003E6  0EC0               	movlw	192
+   204  0003E8  EC36  F002         	call	_lcd_cmd
+   205  0003EC                     l881:
+   206                           
+   207                           ;keypad.c: 139:   keypadC1();
+   208  0003EC  EC95  F001         	call	_keypadC1	;wreg free
+   209  0003F0                     
+   210                           ;keypad.c: 140:    keypadC2();
+   211  0003F0  EC4D  F001         	call	_keypadC2	;wreg free
+   212  0003F4                     
+   213                           ;keypad.c: 141:     keypadC3();
+   214  0003F4  EC05  F001         	call	_keypadC3	;wreg free
+   215  0003F8  EFF6  F001         	goto	l881
+   216  0003FC  EF00  F000         	goto	start
+   217  000400                     __end_of_main:
+   218                           	callstack 0
+   219                           
+   220 ;; *************** function _lcd_string *****************
+   221 ;; Defined at:
+   222 ;;		line 43 in file "keypad.c"
+   223 ;; Parameters:    Size  Location     Type
+   224 ;;  strng           2    2[COMRAM] PTR unsigned char 
+   225 ;;		 -> STR_1(8), 
+   226 ;; Auto vars:     Size  Location     Type
+   227 ;;		None
+   228 ;; Return value:  Size  Location     Type
+   229 ;;                  1    wreg      void 
+   230 ;; Registers used:
+   231 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   232 ;; Tracked objects:
+   233 ;;		On entry : 0/0
+   234 ;;		On exit  : 0/0
+   235 ;;		Unchanged: 0/0
+   236 ;; Data sizes:     COMRAM   BANK0   BANK1
+   237 ;;      Params:         2       0       0
+   238 ;;      Locals:         0       0       0
+   239 ;;      Temps:          0       0       0
+   240 ;;      Totals:         2       0       0
+   241 ;;Total ram usage:        2 bytes
+   242 ;; Hardware stack levels used: 1
+   243 ;; Hardware stack levels required when called: 2
+   244 ;; This function calls:
+   245 ;;		_lcd_data
+   246 ;; This function is called by:
+   247 ;;		_main
+   248 ;; This function uses a non-reentrant model
+   249 ;;
+   250                           
+   251                           	psect	text1
+   252  000400                     __ptext1:
+   253                           	callstack 0
+   254  000400                     _lcd_string:
+   255                           	callstack 28
+   256  000400                     
+   257                           ;keypad.c: 43: void lcd_string(unsigned char *strng);keypad.c: 44: {;keypad.c: 45:     w
+      +                          hile(*strng != 0)
+   258  000400  EF0C  F002         	goto	l865
+   259  000404                     l861:
+   260                           
+   261                           ;keypad.c: 46:         lcd_data(*strng++);
+   262  000404  C003  FFF6         	movff	lcd_string@strng,tblptrl
+   263  000408  C004  FFF7         	movff	lcd_string@strng+1,tblptrh
+   264  00040C                     	if	0	;tblptru may be non-zero
+   265  00040C                     	endif
+   266  00040C                     	if	0	;tblptru may be non-zero
+   267  00040C                     	endif
+   268  00040C  0008               	tblrd		*
+   269  00040E  50F5               	movf	tablat,w,c
+   270  000410  EC3E  F002         	call	_lcd_data
+   271  000414  4A03               	infsnz	lcd_string@strng^0,f,c
+   272  000416  2A04               	incf	(lcd_string@strng+1)^0,f,c
+   273  000418                     l865:
+   274                           
+   275                           ;keypad.c: 45:     while(*strng != 0)
+   276  000418  C003  FFF6         	movff	lcd_string@strng,tblptrl
+   277  00041C  C004  FFF7         	movff	lcd_string@strng+1,tblptrh
+   278  000420                     	if	0	;tblptru may be non-zero
+   279  000420                     	endif
+   280  000420                     	if	0	;tblptru may be non-zero
+   281  000420                     	endif
+   282  000420  0008               	tblrd		*
+   283  000422  50F5               	movf	tablat,w,c
+   284  000424  0900               	iorlw	0
+   285  000426  A4D8               	btfss	status,2,c
+   286  000428  EF18  F002         	goto	u261
+   287  00042C  EF1A  F002         	goto	u260
+   288  000430                     u261:
+   289  000430  EF02  F002         	goto	l861
+   290  000434                     u260:
+   291  000434  0012               	return		;funcret
+   292  000436                     __end_of_lcd_string:
+   293                           	callstack 0
+   294                           
+   295 ;; *************** function _lcd_int *****************
+   296 ;; Defined at:
+   297 ;;		line 50 in file "keypad.c"
+   298 ;; Parameters:    Size  Location     Type
+   299 ;;		None
+   300 ;; Auto vars:     Size  Location     Type
+   301 ;;		None
+   302 ;; Return value:  Size  Location     Type
+   303 ;;                  1    wreg      void 
+   304 ;; Registers used:
+   305 ;;		wreg, cstack
+   306 ;; Tracked objects:
+   307 ;;		On entry : 0/0
+   308 ;;		On exit  : 0/0
+   309 ;;		Unchanged: 0/0
+   310 ;; Data sizes:     COMRAM   BANK0   BANK1
+   311 ;;      Params:         0       0       0
+   312 ;;      Locals:         0       0       0
+   313 ;;      Temps:          0       0       0
+   314 ;;      Totals:         0       0       0
+   315 ;;Total ram usage:        0 bytes
+   316 ;; Hardware stack levels used: 1
+   317 ;; Hardware stack levels required when called: 2
+   318 ;; This function calls:
+   319 ;;		_lcd_cmd
+   320 ;; This function is called by:
+   321 ;;		_main
+   322 ;; This function uses a non-reentrant model
+   323 ;;
+   324                           
+   325                           	psect	text2
+   326  000436                     __ptext2:
+   327                           	callstack 0
+   328  000436                     _lcd_int:
+   329                           	callstack 28
+   330  000436                     
+   331                           ;keypad.c: 51:     lcd_cmd(0x38);
+   332  000436  0E38               	movlw	56
+   333  000438  EC36  F002         	call	_lcd_cmd
+   334                           
+   335                           ;keypad.c: 52:     lcd_cmd(0x0E);
+   336  00043C  0E0E               	movlw	14
+   337  00043E  EC36  F002         	call	_lcd_cmd
+   338                           
+   339                           ;keypad.c: 53:     lcd_cmd(0x01);
+   340  000442  0E01               	movlw	1
+   341  000444  EC36  F002         	call	_lcd_cmd
+   342                           
+   343                           ;keypad.c: 54:     lcd_cmd(0x06);
+   344  000448  0E06               	movlw	6
+   345  00044A  EC36  F002         	call	_lcd_cmd
+   346                           
+   347                           ;keypad.c: 55:     lcd_cmd(0x80);
+   348  00044E  0E80               	movlw	128
+   349  000450  EC36  F002         	call	_lcd_cmd
+   350  000454  0012               	return		;funcret
+   351  000456                     __end_of_lcd_int:
+   352                           	callstack 0
+   353                           
+   354 ;; *************** function _lcd_cmd *****************
+   355 ;; Defined at:
+   356 ;;		line 28 in file "keypad.c"
+   357 ;; Parameters:    Size  Location     Type
+   358 ;;  command         1    wreg     unsigned char 
+   359 ;; Auto vars:     Size  Location     Type
+   360 ;;  command         1    1[COMRAM] unsigned char 
+   361 ;; Return value:  Size  Location     Type
+   362 ;;                  1    wreg      void 
+   363 ;; Registers used:
+   364 ;;		wreg, cstack
+   365 ;; Tracked objects:
+   366 ;;		On entry : 0/0
+   367 ;;		On exit  : 0/0
+   368 ;;		Unchanged: 0/0
+   369 ;; Data sizes:     COMRAM   BANK0   BANK1
+   370 ;;      Params:         0       0       0
+   371 ;;      Locals:         1       0       0
+   372 ;;      Temps:          0       0       0
+   373 ;;      Totals:         1       0       0
+   374 ;;Total ram usage:        1 bytes
+   375 ;; Hardware stack levels used: 1
+   376 ;; Hardware stack levels required when called: 1
+   377 ;; This function calls:
+   378 ;;		_lcd_lat
+   379 ;; This function is called by:
+   380 ;;		_lcd_int
+   381 ;;		_main
+   382 ;; This function uses a non-reentrant model
+   383 ;;
+   384                           
+   385                           	psect	text3
+   386  00046C                     __ptext3:
+   387                           	callstack 0
+   388  00046C                     _lcd_cmd:
+   389                           	callstack 28
+   390                           
+   391                           ;incstack = 0
+   392                           ;lcd_cmd@command stored from wreg
+   393  00046C  6E02               	movwf	lcd_cmd@command^0,c
+   394  00046E                     
+   395                           ;keypad.c: 29:     PORTD = command;
+   396  00046E  C002  FF83         	movff	lcd_cmd@command,3971	;volatile
+   397  000472                     
+   398                           ;keypad.c: 30:     PORTCbits.RC0=0;
+   399  000472  9082               	bcf	130,0,c	;volatile
+   400  000474                     
+   401                           ;keypad.c: 31:     PORTCbits.RC1=0;
+   402  000474  9282               	bcf	130,1,c	;volatile
+   403  000476                     
+   404                           ;keypad.c: 32:     lcd_lat();
+   405  000476  EC2B  F002         	call	_lcd_lat	;wreg free
+   406  00047A  0012               	return		;funcret
+   407  00047C                     __end_of_lcd_cmd:
+   408                           	callstack 0
+   409                           
+   410 ;; *************** function _keypadC3 *****************
+   411 ;; Defined at:
+   412 ;;		line 103 in file "keypad.c"
+   413 ;; Parameters:    Size  Location     Type
+   414 ;;		None
+   415 ;; Auto vars:     Size  Location     Type
+   416 ;;		None
+   417 ;; Return value:  Size  Location     Type
+   418 ;;                  1    wreg      void 
+   419 ;; Registers used:
+   420 ;;		wreg, cstack
+   421 ;; Tracked objects:
+   422 ;;		On entry : 0/0
+   423 ;;		On exit  : 0/0
+   424 ;;		Unchanged: 0/0
+   425 ;; Data sizes:     COMRAM   BANK0   BANK1
+   426 ;;      Params:         0       0       0
+   427 ;;      Locals:         0       0       0
+   428 ;;      Temps:          0       0       0
+   429 ;;      Totals:         0       0       0
+   430 ;;Total ram usage:        0 bytes
+   431 ;; Hardware stack levels used: 1
+   432 ;; Hardware stack levels required when called: 2
+   433 ;; This function calls:
+   434 ;;		_lcd_data
+   435 ;; This function is called by:
+   436 ;;		_main
+   437 ;; This function uses a non-reentrant model
+   438 ;;
+   439                           
+   440                           	psect	text4
+   441  00020A                     __ptext4:
+   442                           	callstack 0
+   443  00020A                     _keypadC3:
+   444                           	callstack 28
+   445  00020A                     
+   446                           ;keypad.c: 105:     PORTBbits.RB0=0;
+   447  00020A  9081               	bcf	129,0,c	;volatile
+   448                           
+   449                           ;keypad.c: 106:     PORTBbits.RB1=0;
+   450  00020C  9281               	bcf	129,1,c	;volatile
+   451                           
+   452                           ;keypad.c: 107:     PORTBbits.RB2=1;
+   453  00020E  8481               	bsf	129,2,c	;volatile
+   454                           
+   455                           ;keypad.c: 110:     if(PORTBbits.RB4==1){
+   456  000210  A881               	btfss	129,4,c	;volatile
+   457  000212  EF0D  F001         	goto	u181
+   458  000216  EF0F  F001         	goto	u180
+   459  00021A                     u181:
+   460  00021A  EF19  F001         	goto	l77
+   461  00021E                     u180:
+   462  00021E                     
+   463                           ;keypad.c: 111:         lcd_data('3');
+   464  00021E  0E33               	movlw	51
+   465  000220  EC3E  F002         	call	_lcd_data
+   466  000224                     l78:
+   467  000224  B881               	btfsc	129,4,c	;volatile
+   468  000226  EF17  F001         	goto	u191
+   469  00022A  EF19  F001         	goto	u190
+   470  00022E                     u191:
+   471  00022E  EF12  F001         	goto	l78
+   472  000232                     u190:
+   473  000232                     l77:
+   474                           
+   475                           ;keypad.c: 114:     if(PORTBbits.RB5==1){
+   476  000232  AA81               	btfss	129,5,c	;volatile
+   477  000234  EF1E  F001         	goto	u201
+   478  000238  EF20  F001         	goto	u200
+   479  00023C                     u201:
+   480  00023C  EF2A  F001         	goto	l81
+   481  000240                     u200:
+   482  000240                     
+   483                           ;keypad.c: 115:         lcd_data('6');
+   484  000240  0E36               	movlw	54
+   485  000242  EC3E  F002         	call	_lcd_data
+   486  000246                     l82:
+   487  000246  BA81               	btfsc	129,5,c	;volatile
+   488  000248  EF28  F001         	goto	u211
+   489  00024C  EF2A  F001         	goto	u210
+   490  000250                     u211:
+   491  000250  EF23  F001         	goto	l82
+   492  000254                     u210:
+   493  000254                     l81:
+   494                           
+   495                           ;keypad.c: 118:     if(PORTBbits.RB6==1){
+   496  000254  AC81               	btfss	129,6,c	;volatile
+   497  000256  EF2F  F001         	goto	u221
+   498  00025A  EF31  F001         	goto	u220
+   499  00025E                     u221:
+   500  00025E  EF3B  F001         	goto	l85
+   501  000262                     u220:
+   502  000262                     
+   503                           ;keypad.c: 119:         lcd_data('9');
+   504  000262  0E39               	movlw	57
+   505  000264  EC3E  F002         	call	_lcd_data
+   506  000268                     l86:
+   507  000268  BC81               	btfsc	129,6,c	;volatile
+   508  00026A  EF39  F001         	goto	u231
+   509  00026E  EF3B  F001         	goto	u230
+   510  000272                     u231:
+   511  000272  EF34  F001         	goto	l86
+   512  000276                     u230:
+   513  000276                     l85:
+   514                           
+   515                           ;keypad.c: 122:     if(PORTBbits.RB7==1){
+   516  000276  AE81               	btfss	129,7,c	;volatile
+   517  000278  EF40  F001         	goto	u241
+   518  00027C  EF42  F001         	goto	u240
+   519  000280                     u241:
+   520  000280  EF4C  F001         	goto	l93
+   521  000284                     u240:
+   522  000284                     
+   523                           ;keypad.c: 123:         lcd_data('#');
+   524  000284  0E23               	movlw	35
+   525  000286  EC3E  F002         	call	_lcd_data
+   526  00028A                     l90:
+   527  00028A  BE81               	btfsc	129,7,c	;volatile
+   528  00028C  EF4A  F001         	goto	u251
+   529  000290  EF4C  F001         	goto	u250
+   530  000294                     u251:
+   531  000294  EF45  F001         	goto	l90
+   532  000298                     u250:
+   533  000298                     l93:
+   534  000298  0012               	return		;funcret
+   535  00029A                     __end_of_keypadC3:
+   536                           	callstack 0
+   537                           
+   538 ;; *************** function _keypadC2 *****************
+   539 ;; Defined at:
+   540 ;;		line 81 in file "keypad.c"
+   541 ;; Parameters:    Size  Location     Type
+   542 ;;		None
+   543 ;; Auto vars:     Size  Location     Type
+   544 ;;		None
+   545 ;; Return value:  Size  Location     Type
+   546 ;;                  1    wreg      void 
+   547 ;; Registers used:
+   548 ;;		wreg, cstack
+   549 ;; Tracked objects:
+   550 ;;		On entry : 0/0
+   551 ;;		On exit  : 0/0
+   552 ;;		Unchanged: 0/0
+   553 ;; Data sizes:     COMRAM   BANK0   BANK1
+   554 ;;      Params:         0       0       0
+   555 ;;      Locals:         0       0       0
+   556 ;;      Temps:          0       0       0
+   557 ;;      Totals:         0       0       0
+   558 ;;Total ram usage:        0 bytes
+   559 ;; Hardware stack levels used: 1
+   560 ;; Hardware stack levels required when called: 2
+   561 ;; This function calls:
+   562 ;;		_lcd_data
+   563 ;; This function is called by:
+   564 ;;		_main
+   565 ;; This function uses a non-reentrant model
+   566 ;;
+   567                           
+   568                           	psect	text5
+   569  00029A                     __ptext5:
+   570                           	callstack 0
+   571  00029A                     _keypadC2:
+   572                           	callstack 28
+   573  00029A                     
+   574                           ;keypad.c: 82:     PORTBbits.RB0=0;
+   575  00029A  9081               	bcf	129,0,c	;volatile
+   576                           
+   577                           ;keypad.c: 83:     PORTBbits.RB1=1;
+   578  00029C  8281               	bsf	129,1,c	;volatile
+   579                           
+   580                           ;keypad.c: 84:     PORTBbits.RB2=0;
+   581  00029E  9481               	bcf	129,2,c	;volatile
+   582                           
+   583                           ;keypad.c: 87:     if(PORTBbits.RB4==1){
+   584  0002A0  A881               	btfss	129,4,c	;volatile
+   585  0002A2  EF55  F001         	goto	u101
+   586  0002A6  EF57  F001         	goto	u100
+   587  0002AA                     u101:
+   588  0002AA  EF61  F001         	goto	l58
+   589  0002AE                     u100:
+   590  0002AE                     
+   591                           ;keypad.c: 88:         lcd_data('2');
+   592  0002AE  0E32               	movlw	50
+   593  0002B0  EC3E  F002         	call	_lcd_data
+   594  0002B4                     l59:
+   595  0002B4  B881               	btfsc	129,4,c	;volatile
+   596  0002B6  EF5F  F001         	goto	u111
+   597  0002BA  EF61  F001         	goto	u110
+   598  0002BE                     u111:
+   599  0002BE  EF5A  F001         	goto	l59
+   600  0002C2                     u110:
+   601  0002C2                     l58:
+   602                           
+   603                           ;keypad.c: 91:     if(PORTBbits.RB5==1){
+   604  0002C2  AA81               	btfss	129,5,c	;volatile
+   605  0002C4  EF66  F001         	goto	u121
+   606  0002C8  EF68  F001         	goto	u120
+   607  0002CC                     u121:
+   608  0002CC  EF72  F001         	goto	l62
+   609  0002D0                     u120:
+   610  0002D0                     
+   611                           ;keypad.c: 92:         lcd_data('5');
+   612  0002D0  0E35               	movlw	53
+   613  0002D2  EC3E  F002         	call	_lcd_data
+   614  0002D6                     l63:
+   615  0002D6  BA81               	btfsc	129,5,c	;volatile
+   616  0002D8  EF70  F001         	goto	u131
+   617  0002DC  EF72  F001         	goto	u130
+   618  0002E0                     u131:
+   619  0002E0  EF6B  F001         	goto	l63
+   620  0002E4                     u130:
+   621  0002E4                     l62:
+   622                           
+   623                           ;keypad.c: 95:     if(PORTBbits.RB6==1){
+   624  0002E4  AC81               	btfss	129,6,c	;volatile
+   625  0002E6  EF77  F001         	goto	u141
+   626  0002EA  EF79  F001         	goto	u140
+   627  0002EE                     u141:
+   628  0002EE  EF83  F001         	goto	l66
+   629  0002F2                     u140:
+   630  0002F2                     
+   631                           ;keypad.c: 96:         lcd_data('8');
+   632  0002F2  0E38               	movlw	56
+   633  0002F4  EC3E  F002         	call	_lcd_data
+   634  0002F8                     l67:
+   635  0002F8  BC81               	btfsc	129,6,c	;volatile
+   636  0002FA  EF81  F001         	goto	u151
+   637  0002FE  EF83  F001         	goto	u150
+   638  000302                     u151:
+   639  000302  EF7C  F001         	goto	l67
+   640  000306                     u150:
+   641  000306                     l66:
+   642                           
+   643                           ;keypad.c: 99:     if(PORTBbits.RB7==1){
+   644  000306  AE81               	btfss	129,7,c	;volatile
+   645  000308  EF88  F001         	goto	u161
+   646  00030C  EF8A  F001         	goto	u160
+   647  000310                     u161:
+   648  000310  EF94  F001         	goto	l74
+   649  000314                     u160:
+   650  000314                     
+   651                           ;keypad.c: 100:         lcd_data('0');
+   652  000314  0E30               	movlw	48
+   653  000316  EC3E  F002         	call	_lcd_data
+   654  00031A                     l71:
+   655  00031A  BE81               	btfsc	129,7,c	;volatile
+   656  00031C  EF92  F001         	goto	u171
+   657  000320  EF94  F001         	goto	u170
+   658  000324                     u171:
+   659  000324  EF8D  F001         	goto	l71
+   660  000328                     u170:
+   661  000328                     l74:
+   662  000328  0012               	return		;funcret
+   663  00032A                     __end_of_keypadC2:
+   664                           	callstack 0
+   665                           
+   666 ;; *************** function _keypadC1 *****************
+   667 ;; Defined at:
+   668 ;;		line 58 in file "keypad.c"
+   669 ;; Parameters:    Size  Location     Type
+   670 ;;		None
+   671 ;; Auto vars:     Size  Location     Type
+   672 ;;		None
+   673 ;; Return value:  Size  Location     Type
+   674 ;;                  1    wreg      void 
+   675 ;; Registers used:
+   676 ;;		wreg, cstack
+   677 ;; Tracked objects:
+   678 ;;		On entry : 0/0
+   679 ;;		On exit  : 0/0
+   680 ;;		Unchanged: 0/0
+   681 ;; Data sizes:     COMRAM   BANK0   BANK1
+   682 ;;      Params:         0       0       0
+   683 ;;      Locals:         0       0       0
+   684 ;;      Temps:          0       0       0
+   685 ;;      Totals:         0       0       0
+   686 ;;Total ram usage:        0 bytes
+   687 ;; Hardware stack levels used: 1
+   688 ;; Hardware stack levels required when called: 2
+   689 ;; This function calls:
+   690 ;;		_lcd_data
+   691 ;; This function is called by:
+   692 ;;		_main
+   693 ;; This function uses a non-reentrant model
+   694 ;;
+   695                           
+   696                           	psect	text6
+   697  00032A                     __ptext6:
+   698                           	callstack 0
+   699  00032A                     _keypadC1:
+   700                           	callstack 28
+   701  00032A                     
+   702                           ;keypad.c: 60:     PORTBbits.RB0=1;
+   703  00032A  8081               	bsf	129,0,c	;volatile
+   704                           
+   705                           ;keypad.c: 61:     PORTBbits.RB1=0;
+   706  00032C  9281               	bcf	129,1,c	;volatile
+   707                           
+   708                           ;keypad.c: 62:     PORTBbits.RB2=0;
+   709  00032E  9481               	bcf	129,2,c	;volatile
+   710                           
+   711                           ;keypad.c: 64:   if(PORTBbits.RB4==1){
+   712  000330  A881               	btfss	129,4,c	;volatile
+   713  000332  EF9D  F001         	goto	u21
+   714  000336  EF9F  F001         	goto	u20
+   715  00033A                     u21:
+   716  00033A  EFA9  F001         	goto	l39
+   717  00033E                     u20:
+   718  00033E                     
+   719                           ;keypad.c: 65:         lcd_data('1');
+   720  00033E  0E31               	movlw	49
+   721  000340  EC3E  F002         	call	_lcd_data
+   722  000344                     l40:
+   723  000344  B881               	btfsc	129,4,c	;volatile
+   724  000346  EFA7  F001         	goto	u31
+   725  00034A  EFA9  F001         	goto	u30
+   726  00034E                     u31:
+   727  00034E  EFA2  F001         	goto	l40
+   728  000352                     u30:
+   729  000352                     l39:
+   730                           
+   731                           ;keypad.c: 68:     if(PORTBbits.RB5==1){
+   732  000352  AA81               	btfss	129,5,c	;volatile
+   733  000354  EFAE  F001         	goto	u41
+   734  000358  EFB0  F001         	goto	u40
+   735  00035C                     u41:
+   736  00035C  EFBA  F001         	goto	l43
+   737  000360                     u40:
+   738  000360                     
+   739                           ;keypad.c: 69:         lcd_data('4');
+   740  000360  0E34               	movlw	52
+   741  000362  EC3E  F002         	call	_lcd_data
+   742  000366                     l44:
+   743  000366  BA81               	btfsc	129,5,c	;volatile
+   744  000368  EFB8  F001         	goto	u51
+   745  00036C  EFBA  F001         	goto	u50
+   746  000370                     u51:
+   747  000370  EFB3  F001         	goto	l44
+   748  000374                     u50:
+   749  000374                     l43:
+   750                           
+   751                           ;keypad.c: 72:     if(PORTBbits.RB6==1){
+   752  000374  AC81               	btfss	129,6,c	;volatile
+   753  000376  EFBF  F001         	goto	u61
+   754  00037A  EFC1  F001         	goto	u60
+   755  00037E                     u61:
+   756  00037E  EFCB  F001         	goto	l47
+   757  000382                     u60:
+   758  000382                     
+   759                           ;keypad.c: 73:         lcd_data('7');
+   760  000382  0E37               	movlw	55
+   761  000384  EC3E  F002         	call	_lcd_data
+   762  000388                     l48:
+   763  000388  BC81               	btfsc	129,6,c	;volatile
+   764  00038A  EFC9  F001         	goto	u71
+   765  00038E  EFCB  F001         	goto	u70
+   766  000392                     u71:
+   767  000392  EFC4  F001         	goto	l48
+   768  000396                     u70:
+   769  000396                     l47:
+   770                           
+   771                           ;keypad.c: 76:     if(PORTBbits.RB7==1){
+   772  000396  AE81               	btfss	129,7,c	;volatile
+   773  000398  EFD0  F001         	goto	u81
+   774  00039C  EFD2  F001         	goto	u80
+   775  0003A0                     u81:
+   776  0003A0  EFDC  F001         	goto	l55
+   777  0003A4                     u80:
+   778  0003A4                     
+   779                           ;keypad.c: 77:         lcd_data('*');
+   780  0003A4  0E2A               	movlw	42
+   781  0003A6  EC3E  F002         	call	_lcd_data
+   782  0003AA                     l52:
+   783  0003AA  BE81               	btfsc	129,7,c	;volatile
+   784  0003AC  EFDA  F001         	goto	u91
+   785  0003B0  EFDC  F001         	goto	u90
+   786  0003B4                     u91:
+   787  0003B4  EFD5  F001         	goto	l52
+   788  0003B8                     u90:
+   789  0003B8                     l55:
+   790  0003B8  0012               	return		;funcret
+   791  0003BA                     __end_of_keypadC1:
+   792                           	callstack 0
+   793                           
+   794 ;; *************** function _lcd_data *****************
+   795 ;; Defined at:
+   796 ;;		line 35 in file "keypad.c"
+   797 ;; Parameters:    Size  Location     Type
+   798 ;;  data            1    wreg     unsigned char 
+   799 ;; Auto vars:     Size  Location     Type
+   800 ;;  data            1    1[COMRAM] unsigned char 
+   801 ;; Return value:  Size  Location     Type
+   802 ;;                  1    wreg      void 
+   803 ;; Registers used:
+   804 ;;		wreg, cstack
+   805 ;; Tracked objects:
+   806 ;;		On entry : 0/0
+   807 ;;		On exit  : 0/0
+   808 ;;		Unchanged: 0/0
+   809 ;; Data sizes:     COMRAM   BANK0   BANK1
+   810 ;;      Params:         0       0       0
+   811 ;;      Locals:         1       0       0
+   812 ;;      Temps:          0       0       0
+   813 ;;      Totals:         1       0       0
+   814 ;;Total ram usage:        1 bytes
+   815 ;; Hardware stack levels used: 1
+   816 ;; Hardware stack levels required when called: 1
+   817 ;; This function calls:
+   818 ;;		_lcd_lat
+   819 ;; This function is called by:
+   820 ;;		_lcd_string
+   821 ;;		_keypadC1
+   822 ;;		_keypadC2
+   823 ;;		_keypadC3
+   824 ;; This function uses a non-reentrant model
+   825 ;;
+   826                           
+   827                           	psect	text7
+   828  00047C                     __ptext7:
+   829                           	callstack 0
+   830  00047C                     _lcd_data:
+   831                           	callstack 28
+   832                           
+   833                           ;incstack = 0
+   834                           ;lcd_data@data stored from wreg
+   835  00047C  6E02               	movwf	lcd_data@data^0,c
+   836  00047E                     
+   837                           ;keypad.c: 36:     PORTD = data;
+   838  00047E  C002  FF83         	movff	lcd_data@data,3971	;volatile
+   839  000482                     
+   840                           ;keypad.c: 37:     PORTCbits.RC0=1;
+   841  000482  8082               	bsf	130,0,c	;volatile
+   842  000484                     
+   843                           ;keypad.c: 38:     PORTCbits.RC1=0;
+   844  000484  9282               	bcf	130,1,c	;volatile
+   845  000486                     
+   846                           ;keypad.c: 39:     lcd_lat();
+   847  000486  EC2B  F002         	call	_lcd_lat	;wreg free
+   848  00048A  0012               	return		;funcret
+   849  00048C                     __end_of_lcd_data:
+   850                           	callstack 0
+   851                           
+   852 ;; *************** function _lcd_lat *****************
+   853 ;; Defined at:
+   854 ;;		line 22 in file "keypad.c"
+   855 ;; Parameters:    Size  Location     Type
+   856 ;;		None
+   857 ;; Auto vars:     Size  Location     Type
+   858 ;;		None
+   859 ;; Return value:  Size  Location     Type
+   860 ;;                  1    wreg      void 
+   861 ;; Registers used:
+   862 ;;		wreg
+   863 ;; Tracked objects:
+   864 ;;		On entry : 0/0
+   865 ;;		On exit  : 0/0
+   866 ;;		Unchanged: 0/0
+   867 ;; Data sizes:     COMRAM   BANK0   BANK1
+   868 ;;      Params:         0       0       0
+   869 ;;      Locals:         0       0       0
+   870 ;;      Temps:          1       0       0
+   871 ;;      Totals:         1       0       0
+   872 ;;Total ram usage:        1 bytes
+   873 ;; Hardware stack levels used: 1
+   874 ;; This function calls:
+   875 ;;		Nothing
+   876 ;; This function is called by:
+   877 ;;		_lcd_cmd
+   878 ;;		_lcd_data
+   879 ;; This function uses a non-reentrant model
+   880 ;;
+   881                           
+   882                           	psect	text8
+   883  000456                     __ptext8:
+   884                           	callstack 0
+   885  000456                     _lcd_lat:
+   886                           	callstack 28
+   887  000456                     
+   888                           ;keypad.c: 23:     PORTCbits.RC2=1;
+   889  000456  8482               	bsf	130,2,c	;volatile
+   890  000458                     
+   891                           ;keypad.c: 24:     _delay((unsigned long)((10)*(8000000/4000.0)));
+   892  000458  0E1A               	movlw	26
+   893  00045A  6E01               	movwf	??_lcd_lat^0,c
+   894  00045C  0EF8               	movlw	248
+   895  00045E                     u277:
+   896  00045E  2EE8               	decfsz	wreg,f,c
+   897  000460  D7FE               	bra	u277
+   898  000462  2E01               	decfsz	??_lcd_lat^0,f,c
+   899  000464  D7FC               	bra	u277
+   900  000466  D000               	nop2	
+   901  000468                     
+   902                           ;keypad.c: 25:     PORTCbits.RC2=0;
+   903  000468  9482               	bcf	130,2,c	;volatile
+   904  00046A  0012               	return		;funcret
+   905  00046C                     __end_of_lcd_lat:
+   906                           	callstack 0
+   907                           
+   908                           	psect	rparam
+   909  0000                     
+   910                           	psect	idloc
+   911                           
+   912                           ;Config register IDLOC0 @ 0x200000
+   913                           ;	unspecified, using default values
+   914  200000                     	org	2097152
+   915  200000  FF                 	db	255
+   916                           
+   917                           ;Config register IDLOC1 @ 0x200001
+   918                           ;	unspecified, using default values
+   919  200001                     	org	2097153
+   920  200001  FF                 	db	255
+   921                           
+   922                           ;Config register IDLOC2 @ 0x200002
+   923                           ;	unspecified, using default values
+   924  200002                     	org	2097154
+   925  200002  FF                 	db	255
+   926                           
+   927                           ;Config register IDLOC3 @ 0x200003
+   928                           ;	unspecified, using default values
+   929  200003                     	org	2097155
+   930  200003  FF                 	db	255
+   931                           
+   932                           ;Config register IDLOC4 @ 0x200004
+   933                           ;	unspecified, using default values
+   934  200004                     	org	2097156
+   935  200004  FF                 	db	255
+   936                           
+   937                           ;Config register IDLOC5 @ 0x200005
+   938                           ;	unspecified, using default values
+   939  200005                     	org	2097157
+   940  200005  FF                 	db	255
+   941                           
+   942                           ;Config register IDLOC6 @ 0x200006
+   943                           ;	unspecified, using default values
+   944  200006                     	org	2097158
+   945  200006  FF                 	db	255
+   946                           
+   947                           ;Config register IDLOC7 @ 0x200007
+   948                           ;	unspecified, using default values
+   949  200007                     	org	2097159
+   950  200007  FF                 	db	255
+   951                           
+   952                           	psect	config
+   953                           
+   954                           ; Padding undefined space
+   955  300000                     	org	3145728
+   956  300000  FF                 	db	255
+   957                           
+   958                           ;Config register CONFIG1H @ 0x300001
+   959                           ;	Oscillator Selection bits
+   960                           ;	FOSC = INTIO7, Internal oscillator block, CLKOUT function on OSC2
+   961                           ;	4X PLL Enable
+   962                           ;	PLLCFG = OFF, Oscillator used directly
+   963                           ;	Primary clock enable bit
+   964                           ;	PRICLKEN = OFF, Primary clock can be disabled by software
+   965                           ;	Fail-Safe Clock Monitor Enable bit
+   966                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+   967                           ;	Internal/External Oscillator Switchover bit
+   968                           ;	IESO = OFF, Oscillator Switchover mode disabled
+   969  300001                     	org	3145729
+   970  300001  09                 	db	9
+   971                           
+   972                           ;Config register CONFIG2L @ 0x300002
+   973                           ;	Power-up Timer Enable bit
+   974                           ;	PWRTEN = OFF, Power up timer disabled
+   975                           ;	Brown-out Reset Enable bits
+   976                           ;	BOREN = SBORDIS, Brown-out Reset enabled in hardware only (SBOREN is disabled)
+   977                           ;	Brown Out Reset Voltage bits
+   978                           ;	BORV = 190, VBOR set to 1.90 V nominal
+   979  300002                     	org	3145730
+   980  300002  1F                 	db	31
+   981                           
+   982                           ;Config register CONFIG2H @ 0x300003
+   983                           ;	Watchdog Timer Enable bits
+   984                           ;	WDTEN = OFF, Watch dog timer is always disabled. SWDTEN has no effect.
+   985                           ;	Watchdog Timer Postscale Select bits
+   986                           ;	WDTPS = 32768, 1:32768
+   987  300003                     	org	3145731
+   988  300003  3C                 	db	60
+   989                           
+   990                           ; Padding undefined space
+   991  300004                     	org	3145732
+   992  300004  FF                 	db	255
+   993                           
+   994                           ;Config register CONFIG3H @ 0x300005
+   995                           ;	CCP2 MUX bit
+   996                           ;	CCP2MX = PORTC1, CCP2 input/output is multiplexed with RC1
+   997                           ;	PORTB A/D Enable bit
+   998                           ;	PBADEN = OFF, PORTB<5:0> pins are configured as digital I/O on Reset
+   999                           ;	P3A/CCP3 Mux bit
+  1000                           ;	CCP3MX = PORTB5, P3A/CCP3 input/output is multiplexed with RB5
+  1001                           ;	HFINTOSC Fast Start-up
+  1002                           ;	HFOFST = ON, HFINTOSC output and ready status are not delayed by the oscillator stable
+      +                           status
+  1003                           ;	Timer3 Clock input mux bit
+  1004                           ;	T3CMX = PORTC0, T3CKI is on RC0
+  1005                           ;	ECCP2 B output mux bit
+  1006                           ;	P2BMX = PORTD2, P2B is on RD2
+  1007                           ;	MCLR Pin Enable bit
+  1008                           ;	MCLRE = EXTMCLR, MCLR pin enabled, RE3 input pin disabled
+  1009  300005                     	org	3145733
+  1010  300005  BD                 	db	189
+  1011                           
+  1012                           ;Config register CONFIG4L @ 0x300006
+  1013                           ;	Stack Full/Underflow Reset Enable bit
+  1014                           ;	STVREN = OFF, Stack full/underflow will not cause Reset
+  1015                           ;	Single-Supply ICSP Enable bit
+  1016                           ;	LVP = OFF, Single-Supply ICSP disabled
+  1017                           ;	Extended Instruction Set Enable bit
+  1018                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+      +                          de)
+  1019                           ;	Background Debug
+  1020                           ;	DEBUG = 0x1, unprogrammed default
+  1021  300006                     	org	3145734
+  1022  300006  80                 	db	128
+  1023                           
+  1024                           ; Padding undefined space
+  1025  300007                     	org	3145735
+  1026  300007  FF                 	db	255
+  1027                           
+  1028                           ;Config register CONFIG5L @ 0x300008
+  1029                           ;	Code Protection Block 0
+  1030                           ;	CP0 = OFF, Block 0 (000200-000FFFh) not code-protected
+  1031                           ;	Code Protection Block 1
+  1032                           ;	CP1 = OFF, Block 1 (001000-001FFFh) not code-protected
+  1033  300008                     	org	3145736
+  1034  300008  03                 	db	3
+  1035                           
+  1036                           ;Config register CONFIG5H @ 0x300009
+  1037                           ;	Boot Block Code Protection bit
+  1038                           ;	CPB = OFF, Boot block (000000-0001FFh) not code-protected
+  1039                           ;	Data EEPROM Code Protection bit
+  1040                           ;	CPD = OFF, Data EEPROM not code-protected
+  1041  300009                     	org	3145737
+  1042  300009  C0                 	db	192
+  1043                           
+  1044                           ;Config register CONFIG6L @ 0x30000A
+  1045                           ;	Write Protection Block 0
+  1046                           ;	WRT0 = OFF, Block 0 (000200-000FFFh) not write-protected
+  1047                           ;	Write Protection Block 1
+  1048                           ;	WRT1 = OFF, Block 1 (001000-001FFFh) not write-protected
+  1049  30000A                     	org	3145738
+  1050  30000A  03                 	db	3
+  1051                           
+  1052                           ;Config register CONFIG6H @ 0x30000B
+  1053                           ;	Configuration Register Write Protection bit
+  1054                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  1055                           ;	Boot Block Write Protection bit
+  1056                           ;	WRTB = OFF, Boot Block (000000-0001FFh) not write-protected
+  1057                           ;	Data EEPROM Write Protection bit
+  1058                           ;	WRTD = OFF, Data EEPROM not write-protected
+  1059  30000B                     	org	3145739
+  1060  30000B  E0                 	db	224
+  1061                           
+  1062                           ;Config register CONFIG7L @ 0x30000C
+  1063                           ;	Table Read Protection Block 0
+  1064                           ;	EBTR0 = OFF, Block 0 (000200-000FFFh) not protected from table reads executed in other
+      +                           blocks
+  1065                           ;	Table Read Protection Block 1
+  1066                           ;	EBTR1 = OFF, Block 1 (001000-001FFFh) not protected from table reads executed in other
+      +                           blocks
+  1067  30000C                     	org	3145740
+  1068  30000C  03                 	db	3
+  1069                           
+  1070                           ;Config register CONFIG7H @ 0x30000D
+  1071                           ;	Boot Block Table Read Protection bit
+  1072                           ;	EBTRB = OFF, Boot Block (000000-0001FFh) not protected from table reads executed in ot
+      +                          her blocks
+  1073  30000D                     	org	3145741
+  1074  30000D  40                 	db	64
+  1075                           tosu	equ	0xFFF
+  1076                           tosh	equ	0xFFE
+  1077                           tosl	equ	0xFFD
+  1078                           stkptr	equ	0xFFC
+  1079                           pclatu	equ	0xFFB
+  1080                           pclath	equ	0xFFA
+  1081                           pcl	equ	0xFF9
+  1082                           tblptru	equ	0xFF8
+  1083                           tblptrh	equ	0xFF7
+  1084                           tblptrl	equ	0xFF6
+  1085                           tablat	equ	0xFF5
+  1086                           prodh	equ	0xFF4
+  1087                           prodl	equ	0xFF3
+  1088                           indf0	equ	0xFEF
+  1089                           postinc0	equ	0xFEE
+  1090                           postdec0	equ	0xFED
+  1091                           preinc0	equ	0xFEC
+  1092                           plusw0	equ	0xFEB
+  1093                           fsr0h	equ	0xFEA
+  1094                           fsr0l	equ	0xFE9
+  1095                           wreg	equ	0xFE8
+  1096                           indf1	equ	0xFE7
+  1097                           postinc1	equ	0xFE6
+  1098                           postdec1	equ	0xFE5
+  1099                           preinc1	equ	0xFE4
+  1100                           plusw1	equ	0xFE3
+  1101                           fsr1h	equ	0xFE2
+  1102                           fsr1l	equ	0xFE1
+  1103                           bsr	equ	0xFE0
+  1104                           indf2	equ	0xFDF
+  1105                           postinc2	equ	0xFDE
+  1106                           postdec2	equ	0xFDD
+  1107                           preinc2	equ	0xFDC
+  1108                           plusw2	equ	0xFDB
+  1109                           fsr2h	equ	0xFDA
+  1110                           fsr2l	equ	0xFD9
+  1111                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     8
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      4       4
+    BANK0           160      0       0
+    BANK1           256      0       0
+
+Pointer List with Targets:
+
+    lcd_string@strng	PTR unsigned char  size(2) Largest target is 8
+		 -> STR_1(CODE[8]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_lcd_string
+    _lcd_string->_lcd_data
+    _lcd_int->_lcd_cmd
+    _lcd_cmd->_lcd_lat
+    _keypadC3->_lcd_data
+    _keypadC2->_lcd_data
+    _keypadC1->_lcd_data
+    _lcd_data->_lcd_lat
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     211
+                           _keypadC1
+                           _keypadC2
+                           _keypadC3
+                            _lcd_cmd
+                            _lcd_int
+                         _lcd_string
+ ---------------------------------------------------------------------------------
+ (1) _lcd_string                                           2     0      2     136
+                                              2 COMRAM     2     0      2
+                           _lcd_data
+ ---------------------------------------------------------------------------------
+ (1) _lcd_int                                              0     0      0      15
+                            _lcd_cmd
+ ---------------------------------------------------------------------------------
+ (2) _lcd_cmd                                              1     1      0      15
+                                              1 COMRAM     1     1      0
+                            _lcd_lat
+ ---------------------------------------------------------------------------------
+ (1) _keypadC3                                             0     0      0      15
+                           _lcd_data
+ ---------------------------------------------------------------------------------
+ (1) _keypadC2                                             0     0      0      15
+                           _lcd_data
+ ---------------------------------------------------------------------------------
+ (1) _keypadC1                                             0     0      0      15
+                           _lcd_data
+ ---------------------------------------------------------------------------------
+ (2) _lcd_data                                             1     1      0      15
+                                              1 COMRAM     1     1      0
+                            _lcd_lat
+ ---------------------------------------------------------------------------------
+ (3) _lcd_lat                                              1     1      0       0
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _keypadC1
+     _lcd_data
+       _lcd_lat
+   _keypadC2
+     _lcd_data
+   _keypadC3
+     _lcd_data
+   _lcd_cmd
+     _lcd_lat
+   _lcd_int
+     _lcd_cmd
+   _lcd_string
+     _lcd_data
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      4       4       1        4.2%
+STACK                0      0       0       2        0.0%
+BITBANK0            A0      0       0       3        0.0%
+BANK0               A0      0       0       4        0.0%
+BANK1              100      0       0       5        0.0%
+ABS                  0      0       0       6        0.0%
+BITBANK1           100      0       0       7        0.0%
+BIGRAM             1FF      0       0       8        0.0%
+DATA                 0      0       0       9        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.32 build 20210201212658 
+Symbol Table                                                                                   Tue Mar 15 05:22:40 2022
+
+           lcd_data@data 0002                       l21 046A                       l40 0344  
+                     l24 047A                       l33 0434                       l27 048A  
+                     l43 0374                       l52 03AA                       l44 0366  
+                     l36 0454                       l62 02E4                       l55 03B8  
+                     l47 0396                       l39 0352                       l71 031A  
+                     l63 02D6                       l48 0388                       l81 0254  
+                     l74 0328                       l66 0306                       l58 02C2  
+                     l90 028A                       l82 0246                       l67 02F8  
+                     l59 02B4                       l93 0298                       l85 0276  
+                     l77 0232                       l86 0268                       l78 0224  
+                     u20 033E                       u21 033A                       u30 0352  
+                     u31 034E                       u40 0360                       u41 035C  
+                     u50 0374                       u51 0370                       u60 0382  
+                     u61 037E                       u70 0396                       u71 0392  
+                     u80 03A4                       u81 03A0                       u90 03B8  
+                     u91 03B4           lcd_cmd@command 0002                      l811 033E  
+                    l813 0360                      l821 02AE                      l815 0382  
+                    l823 02D0                      l831 021E                      l807 0436  
+                    l817 03A4                      l809 032A                      l825 02F2  
+                    l833 0240                      l827 0314                      l819 029A  
+                    l835 0262                      l781 0468                      l837 0284  
+                    l829 020A                      l861 0404                      l791 047E  
+                    l783 046E                      l863 0414                      l871 03CC  
+                    l777 0456                      l793 0482                      l785 0472  
+                    l865 0418                      l881 03EC                      l873 03D0  
+                    l779 0458                      l795 0484                      l787 0474  
+                    l859 0400                      l883 03F0                      l875 03D4  
+                    l867 03BA                      l797 0486                      l789 0476  
+                    l885 03F4                      l877 03DA                      l869 03C8  
+                    l879 03E6                      u100 02AE                      u101 02AA  
+                    u110 02C2                      u111 02BE                      u120 02D0  
+                    u200 0240                      u121 02CC                      u201 023C  
+                    u130 02E4                      u210 0254                      u131 02E0  
+                    u211 0250                      u140 02F2                      u220 0262  
+                    u141 02EE                      u221 025E                      u150 0306  
+                    u230 0276                      u151 0302                      u231 0272  
+                    u160 0314                      u240 0284                      u161 0310  
+                    u241 0280                      u170 0328                      u250 0298  
+                    u171 0324                      u251 0294                      u180 021E  
+                    u260 0434                      u181 021A                      u261 0430  
+                    u190 0232                      u191 022E                      u277 045E  
+                    wreg 000FE8                     STR_1 0201                     _main 03BA  
+                   start 0000             ___param_bank 000000                    ?_main 0001  
+                  _PORTD 000F83                    _TRISB 000F93                    _TRISC 000F94  
+                  _TRISD 000F95          __end_of_lcd_cmd 047C          __end_of_lcd_lat 046C  
+        __end_of_lcd_int 0456                    tablat 000FF5                    status 000FD8  
+        __initialization 048C             __end_of_main 0400                   ??_main 0005  
+          __activetblptr 000001                   _ANSELC 000F3A                   _ANSELD 000F3B  
+       __end_of_lcd_data 048C         __end_of_keypadC1 03BA         __end_of_keypadC2 032A  
+       __end_of_keypadC3 029A                   isa$std 000001                ??_lcd_cmd 0002  
+              ??_lcd_lat 0001                ??_lcd_int 0003             __mediumconst 0000  
+                 tblptrh 000FF7                   tblptrl 000FF6                   tblptru 000FF8  
+             __accesstop 0060  __end_of__initialization 048C            ___rparam_used 000001  
+         __pcstackCOMRAM 0001                ?_lcd_data 0001               _lcd_string 0400  
+              ?_keypadC1 0001                ?_keypadC2 0001                ?_keypadC3 0001  
+                __Hparam 0000                  __Lparam 0000             __psmallconst 0200  
+                __pcinit 048C                  __ramtop 0200                  __ptext0 03BA  
+                __ptext1 0400                  __ptext2 0436                  __ptext3 046C  
+                __ptext4 020A                  __ptext5 029A                  __ptext6 032A  
+                __ptext7 047C                  __ptext8 0456                  _lcd_cmd 046C  
+                _lcd_lat 0456                  _lcd_int 0436               ??_lcd_data 0002  
+   end_of_initialization 048C               ??_keypadC1 0003               ??_keypadC2 0003  
+             ??_keypadC3 0003                _PORTBbits 000F81                _PORTCbits 000F82  
+            ?_lcd_string 0003      start_initialization 048C      __size_of_lcd_string 0036  
+      __size_of_lcd_data 0010        __size_of_keypadC1 0090        __size_of_keypadC2 0090  
+      __size_of_keypadC3 0090                 ?_lcd_cmd 0001                 ?_lcd_lat 0001  
+               ?_lcd_int 0001              __smallconst 0200             ??_lcd_string 0005  
+               __Hrparam 0000                 __Lrparam 0000             __Lsmallconst 0200  
+     __end_of_lcd_string 0436         __size_of_lcd_cmd 0010         __size_of_lcd_lat 0016  
+       __size_of_lcd_int 0020                 _lcd_data 047C                 _keypadC1 032A  
+               _keypadC2 029A                 _keypadC3 020A            __size_of_main 0046  
+               isa$xinst 000000          lcd_string@strng 0003  
